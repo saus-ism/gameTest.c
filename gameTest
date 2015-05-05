@@ -5,23 +5,84 @@
 #include "Game.h"
 #include "mechanicalTurk.h"
 
-/*Scott's Test*/
+int main (int argc, char * argv[]){
+    /*Scott's Test*/
 
-game = newGame(DEFAULT_DISCIPLINES, DEFAULT_DICE);
-    ASSERT(game != Null);
-    ASSERT(getDiscipline(game, 6) == STUDENT_BPS);
-    ASSERT(getDiceValue(game, 5) == 6);
-    ASSERT(getMostARCs(game) == NO_ONE);
-    makeAction(game, OBTAIN_ARC);
-    ASSERT(getMostARCs(game) == UNI_A);
-    ASSERT(getMostPublications(game) == NO_ONE);
-    makeAction(game, OBTAIN_PUBLICATION);
-    ASSERT(getMostPublications(game) == UNI_A);
-    ASSERT(getTurnNumber(game) == 0);
-    throwDice();
-    ASSERT(getTurnNumber(game) == 5);
+    action  a;
+	a.actionCode = 1;
+	//a.destination = NULL;
+	a.disciplineFrom = 1;
+	a.disciplineTo = 1;
+
+	Game game = newGame(DEFAULT_DISCIPLINES, DEFAULT_DICE);
+	assert(game != Null);
+
+	assert(getDiscipline(game, 6) == STUDENT_BPS);
+
+	assert(getDiceValue(game, 5) == 6);
+
+
+	assert(getMostARCs(game) == NO_ONE);
+	makeAction(game, OBTAIN_ARC);
+	assert(getMostARCs(game) == UNI_A);
+
+	assert(getMostPublications(game) == NO_ONE);
+	makeAction(game, OBTAIN_PUBLICATION);
+	assert(getMostPublications(game) == UNI_A);
+
+	assert(getTurnNumber(game) == 0);
+	throwDice();
+	assert(getTurnNumber(game) == 5);
+
+	assert(getTurnNumber(game) == 2);
+	throwDice();
+	assert(getTurnNumber(game) == 3);
+
+	path noWereSet = "BBR";
+	assert(getCampus(game, noWereSet) == VACANT_VERTEX); 
+
+	
+	/*int getARC(Game g, path pathToEdge);
+	path toEdge = "???";
+	assert(getARC(game, toEdge) == VACANT_ARC);//*/
+
+	assert(isLegalAction(game, PASS) == 0);
+	assert(isLegalAction(game, OBTAIN_ARC) == 1);
+
+	assert(getKPIpoints(game, UNI_A) == 1);
+	assert(getKPIpoints(game, UNI_B) == 0)
+
+	assert(getARCs(g, UNI_A == 1);
+	assert(getARCs(g, UNI_B == 0);
+	
+	assert(getGO8s(g, UNI_B) == 0);
+	makeAction(game, OBTAIN_PUBLICATION);
+	assert(getGO8s(g, UNI_B) == 1);
+
+	assert(getCampuses(game, UNI_A) == 2);
+	makeAction(game, BUILD_CAMPUS);
+	assert(getCampuses(game, UNI_B) == 3);
+	
+	assert(getIPs(game, UNI_A) == 0);
+	makeAction(game, OBTAIN_IP_PATENT);
+	assert(getIPs(game, UNI_B) == 1);
+
+	assert(getPublications(game, UNI_A) == 0);
+	makeAction(game, OBTAIN_PUBLICATION);
+	assert(getPublications(game, UNI_B) == 1);
+
+	/*int getStudents(Game g, int player, int discipline);
+	assert(getStudents(game, UNI_A, STUDENT_MMONEY) == ???? );//*/
+
+	/*int getExchangeRate(Game g, int player,
+		int disciplineFrom, int disciplineTo);
+	assert(getExchangeRate(game, UNI_A, STUDENT_MJ, STUDENT_MTV) == 4?);*/
+
+	disposeGame(game);
+	assert(game == Null);
+
     
-/*George's Test*/
+    /*George's Test*/
 
     if (getTurnNumber (Game g) == 0){
         ASSERT(getWhoseTurn (Game g) == UNI_A);
@@ -34,4 +95,4 @@ game = newGame(DEFAULT_DISCIPLINES, DEFAULT_DICE);
         ASSERT(getPublications (Game g, UNI_A) == 0);
         ASSERT(getIPs (Game g, UNI_A) == 0);
     }
-    
+}
