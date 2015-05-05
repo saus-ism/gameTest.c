@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+#include "Game.h"
+#include "mechanicalTurk.h"
+
+game = newGame(DEFAULT_DISCIPLINES, DEFAULT_DICE);
+    /*Scott's Test*/
+    ASSERT(game != Null);
+    ASSERT(getDiscipline(game, 6) == STUDENT_BPS);
+    ASSERT(getDiceValue(game, 5) == 6);
+    ASSERT(getMostARCs(game) == NO_ONE);
+    makeAction(game, OBTAIN_ARC);
+    ASSERT(getMostARCs(game) == UNI_A);
+    ASSERT(getMostPublications(game) == NO_ONE);
+    makeAction(game, OBTAIN_PUBLICATION);
+    ASSERT(getMostPublications(game) == UNI_A);
+    ASSERT(getTurnNumber(game) == 0);
+    throwDice();
+    ASSERT(getTurnNumber(game) == 5);
+    
+    /*George's Test*/
+
+    if (getTurnNumber (Game g) == 0){
+        ASSERT(getWhoseTurn (Game g) == UNI_A);
+        ASSERT(getKPIpoints (Game g, UNI_A) == 20);
+        ASSERT(getMostARCs (Game g) == NO_ONE);
+        ASSERT(getMostPublications (Game g) == NO_ONE);
+        ASSERT(getCampuses (Game g, UNI_A) == 2);
+        ASSERT(getARCs (Game g, UNI_A) == 2);
+        ASSERT(getGO8s (Game g, UNI_A) == 0);
+        ASSERT(getPublications (Game g, UNI_A) == 0);
+        ASSERT(getIPs (Game g, UNI_A) == 0);
+    }
+    
