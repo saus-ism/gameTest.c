@@ -5,8 +5,9 @@
 #include "Game.h"
 #include "mechanicalTurk.h"
 
+/*Scott's Test*/
+
 game = newGame(DEFAULT_DISCIPLINES, DEFAULT_DICE);
-    /*Scott's Test*/
     ASSERT(game != Null);
     ASSERT(getDiscipline(game, 6) == STUDENT_BPS);
     ASSERT(getDiceValue(game, 5) == 6);
@@ -20,7 +21,7 @@ game = newGame(DEFAULT_DISCIPLINES, DEFAULT_DICE);
     throwDice();
     ASSERT(getTurnNumber(game) == 5);
     
-    /*George's Test*/
+/*George's Test*/
 
     if (getTurnNumber (Game g) == 0){
         ASSERT(getWhoseTurn (Game g) == UNI_A);
